@@ -2,10 +2,11 @@ import React from 'react';
 
 function App() {
   return (
-    <div>
+    <main className={`container-2xl mx-auto`}>
       
-    </div>
+      
+    </main>
   );
-};
+}
 
 export default App;
