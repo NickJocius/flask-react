@@ -1,5 +1,5 @@
 
-from flask import Flask, request
+from flask import Flask, request,jsonify
 import json
 import re
 
@@ -20,7 +20,7 @@ def conversation_analysis():
     Output:
         The longest two unique sentences in the conversation
     '''
-    conversation = request.form.get('conversation') # Get conversation
+    conversation = request.json['body'] # Get conversation
     
     # See if the request is valid
     if conversation is None:
@@ -32,11 +32,13 @@ def conversation_analysis():
     
     # Get the sentences from the conversation
     sentences = get_sentences(conversation)
-    
-    # Identify the longest two sentences
+
+    # # Identify the longest two sentences
     max_sentences = {'sentences': longest_sentences(sentences)}
 
     return json.dumps(max_sentences)
+
+    #return jsonify({'data':sentences})
 
 
 @app.route("/", methods=['GET'])
@@ -75,9 +77,19 @@ def longest_sentences(sents: list) -> list:
     #          TO DO: Fill Out Function        #
     #                                          #
     ############################################
+    sens = []
+    length = 0
+    long1 = max(sents, key=len)
+    
+    for s in sents:
+        if len(s) > length and s != long1:
+            length = len(s)
+            long2 = s
 
+    sens.append(long2)
+    sens.insert(0,long1)
 
-    return 
+    return sens
 
 if __name__ == "__main__":
     app.run(debug=True)
