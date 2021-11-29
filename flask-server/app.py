@@ -1,5 +1,5 @@
 
-from flask import Flask, request,jsonify
+from flask import Flask, request
 import json
 import re
 
@@ -38,7 +38,6 @@ def conversation_analysis():
 
     return json.dumps(max_sentences)
 
-    #return jsonify({'data':sentences})
 
 
 @app.route("/", methods=['GET'])
