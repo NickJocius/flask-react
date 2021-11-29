@@ -6,15 +6,9 @@ import re
 
 app = Flask(__name__)
 
-############################################
-#                                          #
-#      TO DO: Fill Out app.route Args      #
-#                                          #
-############################################
 @app.route("/conversations", methods=['POST']) ## Line to fill out.
 def conversation_analysis():
     '''
-    This function is completed for you
     Input:
         There is no input to this function
     Output:
@@ -42,13 +36,12 @@ def conversation_analysis():
 
 @app.route("/", methods=['GET'])
 def index():
-    '''This function is completed for you as the base endpoint'''
+    '''This function is the base endpoint'''
     return "Server is live!"
 
 
 def get_sentences(conversation: str) -> list:
     '''
-    This function is completed for you
     Input:
         conversation: string containing the conversation from the api request
     Output:
@@ -71,11 +64,6 @@ def longest_sentences(sents: list) -> list:
         the longest being in position 0 and the second longest in 
         position 1
     '''
-    ############################################
-    #                                          #
-    #          TO DO: Fill Out Function        #
-    #                                          #
-    ############################################
     sens = []
     length = 0
     long1 = max(sents, key=len)
